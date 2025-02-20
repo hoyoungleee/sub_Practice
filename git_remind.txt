@@ -1,0 +1,197 @@
+복사: ctrl + insert
+
+붙여넣기: shift + insert
+
+$는 git Bash에서 자동으로 붙음.
+git에 명령 내리려면 무조건 git 으로 시작.
+
+git (할일) --(범위) (수정할 항목) "수정할 값"
+
+git 전역 닉네임 설정(github에서 쓸 것과 일치시키는게 좋음)
+
+$ git config --global user.name "닉네임"
+git 전역 이메일 설정(github에서 쓸 것과 일치시키는게 좋음)
+
+$ git config --global user.email "이메일"
+git 설정한 내용 확인하기
+
+$ git config --list
+로컬 저장소 할 폴더 이동하여 우클릭 후 Open Git Bash Here 클릭하면 원하는 폴더에서 바로 실행
+
+원하는 폴더 로컬 저장소 만들기
+
+$ git init
+현재 상태 보기(관리되는 파일, 수정된 파일 등)
+
+$ git status
+기본 브런치 바꾸기
+
+$ git config --global init.defaultBranch main
+특정파일 로컬 파일 추적상태 만들기
+
+$ git add 파일명.확장자
+해당 폴더 변경사항 통째로 추적상태(staged)만들기
+
+$ git add .
+작업 파일 최근 커밋 상태로 복원하기
+
+$ git restore 파일명
+파일 추적상태에서 빼기
+
+$ git restore --staged 파일명
+작업내용을 특정 시점 커밋내용으로 복원
+
+git restore --source 커밋해시(커밋아이디) 파일명
+파일 커밋하기( 실행시 커밋 메세지 남기는 창(개인이 설정한 에디터)이 뜸
+
+$ git commit
+파일 단순메세지로 커밋하기
+
+$ git commit -m "커밋할 메세지"
+기존 추적 파일 git add 제끼고 커밋하기
+
+$ git commit -am "커밋할 메세지"
+커밋 로그 보기
+
+$ git log
+단순 커밋로그 보기
+
+$ git log --oneline
+직전 커밋 수정하기
+
+$ git commit --amend
+직전 커밋 단순 수정하기
+
+$ git commit --amend -m "수정할 커밋 메세지"
+파일 목록 보기
+
+ls
+숨김파일 까지 포함 목록보기
+
+ls -a
+파일 만들기
+
+touch 파일명.확장자
+
+폴더 만들기
+
+mkdir 폴더명
+
+브랜치 정보보기
+
+$ git branch
+
+원격 브랜치 정보보기
+
+$ git branch -r
+
+브랜치 생성
+
+$ git branch 브랜치명
+
+브랜치 이름변경
+
+$ git branch -m 기존브랜치명 바꿀브랜치명
+
+브랜치 이동
+
+$ git switch 브랜치명
+
+브랜치 생성 및 이동
+
+$ git switch -c 브랜치명 가지칠브랜치(없으면현재브랜치기준)
+
+브랜치 삭제(merge가 된 경우)
+-$ git branch -d 브랜치명
+
+브랜치 강제 삭제
+-$ git branch -D 브랜치명
+
+브랜치 도식도 모두 보기
+
+$ git log --oneline --graph --all
+코드 커밋 변경사항 비교(워크디텍토리 비교시)
+
+$ git diff
+코드 커밋 변경사항 비교(현재 최신 커밋과 비교시)
+
+$ git diff HEAD
+코드 커밋 변경사항 비교(커밋끼리 비교시)
+
+$ git diff 커밋아이디1..커밋아이디2
+코드 커밋 변경사항 비교(브랜치끼리 비교시)
+
+$ git diff 브랜치명1..브랜치명2
+브랜치 작업중 커밋까진 그렇고 다른 브랜치로 이동전 임시저장할때 쓰는
+
+git stash 작업
+임시저장
+
+$ git stash
+임시저장 기록남기기
+
+$ git stash save "기록사항"
+임시저장소 목록
+
+$ git stash list
+임시저장 항목 꺼내기(단건일 경우, 리스트에서 사라짐)
+
+$ git stash pop
+임시저장 항목 꺼내기(단건일 경우, 리스트에서 안사라짐)
+
+$ git stash apply
+임시저장 특정 항목 꺼내기(복수 건일 경우, 리스트에서 안사라짐)
+
+$ git stash apply stash@{항목번호}
+임시저장 특정 항목 지우기(복수 건일 경우)
+
+$ git stash drop stash@{항목번호}
+임시저장 모두 지우기
+
+$ git stash clear
+해당 커밋 시점으로 이동하기
+
+$ git checkout 커밋아이디
+체크아웃 후 원래대로 돌아오기
+
+$ git switch -
+헤드 근처 커밋 시점으로 이동하기
+
+$ git checkout HEAD~아래번째숫자
+최근 커밋 삭제
+
+$ git reset HEAD^
+특정 커밋으로 이동 리셋(상위커밋삭제)
+
+$ git reset 커밋해시(커밋아이디)
+특정 커밋으로 이동 리셋 작업내용은 그대로 하려면(상위커밋삭제)
+
+$ git reset --mixed 커밋해시(커밋아이디)
+특정 커밋으로 이동 강제 리셋(상위커밋삭제)
+
+$ git reset --hard 커밋해시(커밋아이디)
+직전 삭제 기록 복구
+
+$ git reset --hard ORIG_HEAD
+히스토리가 남는 rebert 커밋해시로 지정하여 작업취소
+
+$ git rebert 삭제할 커밋시점해시
+남의 저장소 복제해오기
+
+git clone 원격저장소공유주소
+연결된 원격저장소 보기
+
+git remote -v
+원격저장소 생성
+
+git remotee add 저장소이름(origin권장) 깃허브레파지토리주소
+원격저장소 정보보기
+
+$ git remote show origin
+원격저장소에 업로드하기
+
+git push 저장소이름 브런치명
+error: failed to push some refs to 오류 뜰때
+
+git pull --rebase origin main
+git push origin main
