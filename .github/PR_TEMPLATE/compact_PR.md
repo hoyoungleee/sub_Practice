@@ -1,3 +1,13 @@
+---
+name: PR 간단
+about: PR 쉽게 작성하도록 돕습니다.
+title: "[enhancement] "
+labels: enhancement
+assignees: ''
+
+---
+
+
 # 무슨 이유로 코드를 변경했는지
 
 # 어떤 위험이나 장애가 발견되었는지
